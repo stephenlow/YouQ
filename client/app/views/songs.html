@@ -1,0 +1,27 @@
+<a class="btn btn-primary" href="/#/create/song"><span class="glyphicon
+  glyphicon-plus"></span> Add Song</a>
+<br>
+
+<table class ="table table-striped">
+  <thread>
+    <th>Title</th>
+    <th>URL</th>
+    <th>Operations</th>
+  </thread>
+  <tbody>
+    <tr ng-repeat="song in songs">
+      <td><a ng-href="/#/song/{{ song._id }}">{{ song.title }}</a></td>
+      <td>{{ song.url }}</td>
+      <td>
+        <div class="button-group">
+          <a ng-href="/#/song/{{ song._id }}/edit" class="btn btn-default">
+            <span class="glyphicon glyphicon-edit"></span>
+          </a>
+          <a ng-href="/#/song/{{ song._id }}/delete" class="btn btn-danger">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+          </a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
