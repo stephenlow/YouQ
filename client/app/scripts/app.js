@@ -24,14 +24,12 @@ angular
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/login.html',
+        controller: 'UserLoginCtrl',
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/register', {
+        templateUrl: 'views/main.html',
+        controller: 'UserRegisterCtrl',
       })
       .when('/songs', {
         templateUrl: 'views/songs.html',
@@ -64,8 +62,18 @@ angular
       });
     });
   })
+  .factory('UserRestangular', function(Restangular) {
+    return Restangular.withConfig(function(RestangularConfigurer) {
+      RestangularConfigurer.setRestangularFields({
+        id: '_id'
+      });
+    });
+  })
   .factory('Song', function(SongRestangular) {
     return SongRestangular.service('song');
+  })
+  .factory('User', function(UserRestangular) {
+    return UserRestangular.service('user');
   })
   .filter('trusted', function($sce) {
     return function(url) {
